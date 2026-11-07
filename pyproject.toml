@@ -1,0 +1,92 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "graphas"
+dynamic = ["version"]
+description = "Speech graph analysis: structural features of a directed word graph built from a transcription"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+    { name = "Henry Saenz" },
+    { name = "Kelly Beltran" },
+    { name = "Carlos Gomes" },
+    { name = "Facundo Carrillo" },
+]
+maintainers = [
+    { name = "Henry Saenz" },
+    { name = "Kelly Beltran" },
+]
+keywords = [
+    "speech",
+    "graph",
+    "software",
+    "python",
+    "natural language processing",
+]
+license = "MIT"
+license-files = ["LICENSE"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Developers",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Text Processing :: Linguistic",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "numpy>=1.26",
+    "scipy>=1.13",
+    "nltk>=3.9",
+    "networkx>=3.3",
+    "unidecode>=1.3",
+    "joblib>=1.3",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7", "ruff>=0.4"]
+doc = [
+    "sphinx",
+    "numpydoc",
+    "pydata-sphinx-theme",
+    "myst-parser",
+]
+full = ["graphas[dev,doc]"]
+
+[project.scripts]
+graphas = "graphas.cli:run"
+
+[project.urls]
+Homepage = "https://github.com/nlp-pucrs/graphas"
+Repository = "https://github.com/nlp-pucrs/graphas"
+Issues = "https://github.com/nlp-pucrs/graphas/issues"
+
+[tool.setuptools.dynamic]
+version = { attr = "graphas.const.app.APP_VERSION" }
+
+[tool.setuptools.packages.find]
+include = ["graphas*"]
+
+[tool.ruff]
+line-length = 88
+
+[tool.ruff.lint]
+# pycodestyle (E/W), pyflakes (F), isort (I), pydocstyle (D)
+select = ["E", "F", "W", "I", "D"]
+ignore = [
+    "D100", # missing docstring in public module
+    "D104", # missing docstring in public package
+    "D105", # missing docstring in magic method
+    "D107", # missing docstring in __init__
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "numpy"
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401", "F403"]

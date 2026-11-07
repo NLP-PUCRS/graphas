@@ -1,0 +1,37 @@
+# virtual environments
+.venv/
+venv/
+
+# build artifacts
+build/
+dist/
+*.egg-info/
+graphas.*/
+
+# caches
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+
+# documentation build
+docs/_build/
+docs/generated/
+
+# local-only notes (not published to the repository)
+CHANGELOG.md
+FEATURES.md
+CONTRIBUTING.md
+
+# tests and validation are local-only development support: nothing under
+# tests/ (runners, validation docs, datasets) is ever published to the
+# repository.
+tests/
+
+# local tooling
+.claude/
+
+# misc
+tmp*
+
+# internal roadmap, kept local like the other development notes
+TODO.md
